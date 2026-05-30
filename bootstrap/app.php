@@ -12,6 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->trustProxies(at: '*');
+
+        // Alias middleware custom untuk autentikasi
+        $middleware->alias([
+            'auth.admin'   => \App\Http\Middleware\AuthAdmin::class,
+            'auth.pegawai' => \App\Http\Middleware\AuthPegawai::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
