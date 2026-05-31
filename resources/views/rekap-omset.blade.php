@@ -31,8 +31,10 @@
     
     <div class="rectangle-4"></div>
     
-    <div class="datepicker-container">
+    <div class="datepicker-hit-area">
         <input type="date" id="kalenderInput" class="native-picker" onchange="ambilDataOmset(this.value)">
+    </div>
+    <div class="datepicker-container">
         <div id="valueFilter" class="text-wrapper-4">-</div>
     </div>
     <div class="rectangle-6"></div>
@@ -68,7 +70,6 @@
         🖨️ Cetak PDF Rekap Omset
     </a>
 
-    <img class="line" src="{{ asset('Images/line-1.svg') }}" />
 
     <div class="admin-bottom-nav">
         <a href="{{ url('/dashboard-admin') }}" class="nav-link">

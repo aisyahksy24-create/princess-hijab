@@ -20,21 +20,24 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Ganti dari center ke flex-start agar bagian atas tidak terpotong permanen */
   background-color: #f0f2f5;
   font-family: "Montserrat Alternates", sans-serif;
   color: var(--dark-text);
-  overflow: hidden;
+  overflow: auto; /* Izinkan scroll jika halaman/mockup terpotong di desktop */
+  padding: 20px 0; /* Beri jarak atas-bawah yang rapi di desktop */
 }
 
 /* RESPONSIVE SMARTPHONE CONTAINER FRAME */
 .android-compact {
-  width: 412px;
+  width: 100%;
+  max-width: 412px;
   height: 917px;
+  margin: 20px auto; /* Posisikan ke tengah layar desktop dengan jarak atas bawah */
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
@@ -63,16 +66,17 @@ html, body {
   html, body {
     align-items: stretch;
     background-color: transparent;
+    padding: 0; /* Hapus jarak putih di atas-bawah pada HP */
   }
   
   .android-compact {
     width: 100%;
-    max-width: 100%;
-    height: 100%;
-    max-height: 100vh;
+    max-width: 412px;
+    min-height: 100%;
     border-radius: 0;
     border: none;
     box-shadow: none;
+    margin: 0 auto;
   }
 }
 
@@ -176,8 +180,10 @@ html, body {
 .admin-bottom-nav {
   position: absolute;
   bottom: 30px;
-  left: 56px;
-  width: 301px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 300px;
   height: 60px;
   border-radius: 40px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -599,11 +605,6 @@ html, body {
 }
 
 /* Welcome page responsive card centering override */
-.page-welcome .white-card {
-  max-width: 376px;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}
 
 /* Pilih Jongko page centering overrides */
 .page-pilih-jongko .rectangle-2 {
@@ -626,11 +627,22 @@ html, body {
 /* ==========================================================================
    PAGE: WELCOME
    ========================================================================== */
+.page-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
 .page-welcome .welcome-header {
-    position: absolute;
-    top: 195px;
+    position: relative;
     width: 100%;
     text-align: center;
+    margin-top: auto;
+    margin-bottom: 30px;
 }
 
 .page-welcome .welcome-header .sub-title {
@@ -651,12 +663,12 @@ html, body {
 }
 
 .page-welcome .avatar-container {
-    position: absolute;
-    top: 375px;
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: auto;
 }
 
 .page-welcome .avatar-container .circle-bg {
@@ -678,27 +690,27 @@ html, body {
 
 .page-welcome .avatar-container .heart-icon {
     position: absolute;
-    left: 135px;
+    left: calc(50% + 50px);
     top: 10px;
     z-index: 3;
     font-size: 24px;
 }
 
 .page-welcome .white-card {
-    position: absolute;
-    bottom: 35px;
-    left: 18px;
-    width: calc(100% - 36px);
-    height: 255px;
+    position: relative;
+    width: 100%;
+    max-width: 376px;
+    height: 220px;
     background-color: rgba(255, 255, 255, 0.65);
-    border-radius: 45px;
+    border-radius: 35px;
     box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 22px;
+    gap: 18px;
+    margin-top: 30px;
 }
 
 .page-welcome .btn {
@@ -1760,6 +1772,10 @@ html, body {
 /* ==========================================================================
    PAGE: REKAP OMSET
    ========================================================================== */
+.page-rekap-omset {
+    padding-bottom: 120px !important;
+}
+
 .page-rekap-omset button:focus-visible {
     outline: 2px solid #4a90e2 !important;
 }
@@ -1834,8 +1850,8 @@ html, body {
 .page-rekap-omset .toggle-btn-hari {
     position: absolute;
     top: 169px;
-    left: 32px;
-    width: 158px;
+    left: 5%;
+    width: 43%;
     height: 43px;
     border-radius: 20px;
     cursor: pointer;
@@ -1846,8 +1862,8 @@ html, body {
 .page-rekap-omset .toggle-btn-bulan {
     position: absolute;
     top: 169px;
-    left: 212px;
-    width: 172px;
+    right: 5%;
+    width: 43%;
     height: 43px;
     border-radius: 20px;
     cursor: pointer;
@@ -1869,7 +1885,7 @@ html, body {
     font-family: "Montserrat Alternates-SemiBold", sans-serif;
     font-weight: 600;
     color: #000000;
-    font-size: 18px;
+    font-size: 15px; /* Perkecil sedikit agar tulisan 'Omset Perbulan' muat penuh di HP kecil */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1880,8 +1896,8 @@ html, body {
 .page-rekap-omset .rectangle-4 {
     position: absolute;
     top: 241px;
-    left: 29px;
-    width: calc(100% - 58px);
+    left: 5%;
+    width: 90%;
     height: 498px;
     background-color: #b3b3b354;
     border-radius: 40px;
@@ -1891,8 +1907,8 @@ html, body {
 .page-rekap-omset .datepicker-container {
     position: absolute;
     top: 261px;
-    left: calc(100% - 205px);
-    width: 141px;
+    right: 15%;
+    width: 130px;
     height: 30px;
     background-color: #ffffff;
     border-radius: 10px;
@@ -1903,13 +1919,22 @@ html, body {
 .page-rekap-omset .rectangle-6 {
     position: absolute;
     top: 261px;
-    left: calc(100% - 99px);
+    right: 5%;
     width: 35px;
     height: 30px;
     background-color: #f5b9db;
     border-radius: 10px;
     border: 1px solid #000000;
     pointer-events: none;
+}
+
+.page-rekap-omset .datepicker-hit-area {
+    position: absolute;
+    top: 261px;
+    right: 5%;
+    width: 170px;
+    height: 30px;
+    z-index: 10;
 }
 
 .page-rekap-omset .native-picker {
@@ -1920,7 +1945,7 @@ html, body {
     height: 100%;
     opacity: 0;
     cursor: pointer;
-    z-index: 5;
+    z-index: 11;
 }
 
 .page-rekap-omset .native-picker::-webkit-calendar-picker-indicator {
@@ -1935,7 +1960,7 @@ html, body {
 .page-rekap-omset .vector-wrapper {
     position: absolute;
     top: 264px;
-    left: calc(100% - 93px);
+    right: 6%;
     width: 24px;
     height: 24px;
     display: flex;
@@ -1971,12 +1996,12 @@ html, body {
 .page-rekap-omset .text-wrapper-5 {
     position: absolute;
     top: 265px;
-    left: 66px;
+    left: 8%;
     width: 105px;
     font-family: "Montserrat Alternates-SemiBold", sans-serif;
     font-weight: 600;
     color: #000000;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 0;
     line-height: normal;
     text-decoration: underline;
@@ -1987,28 +2012,29 @@ html, body {
 .page-rekap-omset .rectangle-9,
 .page-rekap-omset .rectangle-10 {
     position: absolute;
-    width: calc(100% - 110px);
+    width: 90%;
+    left: 5%;
     height: 44px;
     background-color: #ffffff;
     border-radius: 20px;
 }
 
-.page-rekap-omset .rectangle-7 { top: 324px; left: 55px; }
-.page-rekap-omset .rectangle-8 { top: 386px; left: 55px; }
-.page-rekap-omset .rectangle-9 { top: 453px; left: 55px; }
-.page-rekap-omset .rectangle-10 { top: 522px; left: 55px; }
+.page-rekap-omset .rectangle-7 { top: 324px; }
+.page-rekap-omset .rectangle-8 { top: 386px; }
+.page-rekap-omset .rectangle-9 { top: 453px; }
+.page-rekap-omset .rectangle-10 { top: 522px; }
 
 .page-rekap-omset .text-wrapper-6,
 .page-rekap-omset .text-wrapper-7,
 .page-rekap-omset .text-wrapper-8,
 .page-rekap-omset .text-wrapper-9 {
     position: absolute;
-    left: 71px;
-    width: calc(100% - 220px);
+    left: 8%;
+    width: 50%;
     font-family: "Montserrat Alternates-SemiBold", sans-serif;
     font-weight: 600;
     color: #000000;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 0;
     line-height: normal;
     text-decoration: underline;
@@ -2027,26 +2053,27 @@ html, body {
 .page-rekap-omset .text-wrapper-12,
 .page-rekap-omset .text-wrapper-13 {
     position: absolute;
-    width: 110px;
+    width: 30%;
+    right: 8%;
     font-family: "Montserrat Alternates-SemiBold", sans-serif;
     font-weight: 600;
     color: #000000;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 0;
     line-height: normal;
     text-align: right;
 }
 
-.page-rekap-omset .text-wrapper-10 { top: 335px; left: calc(100% - 192px); }
-.page-rekap-omset .text-wrapper-11 { top: 397px; left: calc(100% - 192px); }
-.page-rekap-omset .text-wrapper-12 { top: 462px; left: calc(100% - 192px); }
-.page-rekap-omset .text-wrapper-13 { top: 533px; left: calc(100% - 192px); }
+.page-rekap-omset .text-wrapper-10 { top: 335px; }
+.page-rekap-omset .text-wrapper-11 { top: 397px; }
+.page-rekap-omset .text-wrapper-12 { top: 462px; }
+.page-rekap-omset .text-wrapper-13 { top: 533px; }
 
 .page-rekap-omset .rectangle-11 {
     position: absolute;
     top: 596px;
-    left: calc(100% - 249px);
-    width: 197px;
+    right: 5%;
+    width: 60%;
     height: 97px;
     background-color: #fdf6c8;
     border-radius: 30px;
@@ -2055,8 +2082,8 @@ html, body {
 .page-rekap-omset .rectangle-12 {
     position: absolute;
     top: 596px;
-    left: 45px;
-    width: 105px;
+    left: 5%;
+    width: 26%;
     height: 93px;
     background-color: #f5b9db;
     border-radius: 30px;
@@ -2064,26 +2091,27 @@ html, body {
 
 .page-rekap-omset .text-wrapper-14 {
     top: 635px;
-    left: calc(100% - 237px);
-    width: 180px;
-    font-size: 21px;
+    right: 8%;
+    width: 54%;
+    font-size: 17px; /* Perkecil sedikit agar nominal rupiah panjang tidak menabrak batas kanan */
     position: absolute;
     font-family: "Montserrat Alternates-SemiBold", sans-serif;
     font-weight: 600;
     color: #000000;
     letter-spacing: 0;
     line-height: normal;
+    text-align: center;
 }
 
 .page-rekap-omset .text-wrapper-15 {
     position: absolute;
     top: 608px;
-    left: calc(100% - 227px);
-    width: 142px;
+    right: 8%;
+    width: 54%;
     font-family: "Montserrat Alternates-SemiBold", sans-serif;
     font-weight: 600;
     color: #000000;
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
     letter-spacing: 0;
     line-height: normal;
@@ -2092,7 +2120,7 @@ html, body {
 .page-rekap-omset .streamline-ultimate {
     position: absolute;
     top: 613px;
-    left: 68px;
+    left: calc(5% + 12px);
     width: 59px;
     height: 59px;
     aspect-ratio: 1;
@@ -2109,8 +2137,8 @@ html, body {
 .page-rekap-omset .btn-cetak-pdf {
     position: absolute;
     top: 708px;
-    left: 29px;
-    width: calc(100% - 58px);
+    left: 5%;
+    width: 90%;
     height: 40px;
     background-color: #a1c4fd;
     border-radius: 20px;
@@ -2356,5 +2384,3 @@ html, body {
     background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(245, 185, 219, 1) 100%);
     z-index: 1;
 }
-
-

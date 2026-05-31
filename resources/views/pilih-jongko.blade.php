@@ -17,16 +17,7 @@
   <div class="decor-circle login-green"></div>
   <div class="decor-circle login-pink-large"></div>
   <div class="decor-circle login-blue"></div>
-  <div class="ellipse-4"></div>
-  
-  <img class="line" src="{{ asset('Images/line-3.svg') }}" />
-  
   <div class="rectangle-2"></div>
-  
-  <div class="ic-baseline-face">
-    <img class="vector" src="{{ asset('Images/vector.svg') }}" />
-    <img class="img" src="{{ asset('Images/vector-2.svg') }}" />
-  </div>
   
   <div class="text-wrapper">Halo, {{ session('nama_pegawai', 'Kamu') }}!</div>
   <div class="text-wrapper-2">Pilih Jongko Hari Ini!</div>
