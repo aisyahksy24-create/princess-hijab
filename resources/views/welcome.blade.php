@@ -22,7 +22,7 @@
         <div class="avatar-container">
             <div class="circle-bg"></div>
             
-            <img class="avatar-img" src="{{ asset('Images/logo.svg') }}" alt="Princess Hijab">
+            <img class="avatar-img" src="{{ asset('images/logo.svg') }}" alt="Princess Hijab">
             
             <div class="heart-icon">🖤</div>
         </div>

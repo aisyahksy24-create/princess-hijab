@@ -15,11 +15,11 @@
     <div class="div"></div>
     
     <div class="solar-heart-bold">
-        <img class="vector" src="{{ asset('Images/love-kecil.svg') }}" alt="Heart" />
+        <img class="vector" src="{{ asset('images/love-kecil.svg') }}" alt="Heart" />
     </div>
     
     <a href="{{ url('/dashboard-admin') }}" class="material-symbols" title="Keluar">
-        <img src="{{ asset('Images/keluar.svg') }}" alt="Keluar" />
+        <img src="{{ asset('images/keluar.svg') }}" alt="Keluar" />
     </a>
     
     <button id="tabHari" class="toggle-btn-hari btn-active" onclick="gantiKeHari()">
@@ -40,7 +40,7 @@
     <div class="rectangle-6"></div>
     
     <div class="vector-wrapper">
-        <img src="{{ asset('Images/panah kecil.svg') }}" alt="Dropdown Arrow" />
+        <img src="{{ asset('images/panah-kecil.svg') }}" alt="Dropdown Arrow" />
     </div>
     
     <div id="labelFilter" class="text-wrapper-5">Pilih Tanggal</div>
@@ -64,7 +64,7 @@
     <div class="rectangle-12"></div>
     <div id="totalOmset" class="text-wrapper-14">Rp. 0</div>
     <div class="text-wrapper-15">Total Omset</div>
-    <img class="streamline-ultimate" src="{{ asset('Images/kucing.svg') }}" alt="Lucky Cat" />
+    <img class="streamline-ultimate" src="{{ asset('images/kucing.svg') }}" alt="Lucky Cat" />
 
     <a href="{{ url('/cetak-rekap-omset') }}" class="btn-cetak-pdf">
         🖨️ Cetak PDF Rekap Omset
@@ -73,16 +73,16 @@
 
     <div class="admin-bottom-nav">
         <a href="{{ url('/dashboard-admin') }}" class="nav-link">
-            <img src="{{ asset('Images/rumah.svg') }}" alt="Rumah" />
+            <img src="{{ asset('images/rumah.svg') }}" alt="Rumah" />
         </a>
         <a href="{{ url('/rekap-omset') }}" class="nav-link active">
-            <img src="{{ asset('Images/uang.svg') }}" alt="Uang" />
+            <img src="{{ asset('images/uang.svg') }}" alt="Uang" />
         </a>
         <a href="{{ url('/upah-pegawai') }}" class="nav-link">
-            <img src="{{ asset('Images/tangan love.svg') }}" alt="Tangan Love" />
+            <img src="{{ asset('images/tangan-love.svg') }}" alt="Tangan Love" />
         </a>
         <a href="{{ url('/pendataan') }}" class="nav-link">
-            <img src="{{ asset('Images/catatan hitam.svg') }}" alt="Catatan" />
+            <img src="{{ asset('images/catatan-hitam.svg') }}" alt="Catatan" />
         </a>
     </div>
 </div>

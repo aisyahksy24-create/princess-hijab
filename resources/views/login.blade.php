@@ -45,21 +45,21 @@
 
   
   <div class="boxicons-user-filled">
-    <img class="vector" src="{{ asset('Images/orang%20hitam.svg') }}" />
+    <img class="vector" src="{{ asset('images/orang-hitam.svg') }}" />
   </div>
   
   <div class="boxicons-lock-filled">
-    <img class="img" src="{{ asset('Images/gembok.svg') }}" />
+    <img class="img" src="{{ asset('images/gembok.svg') }}" />
   </div>
   
-  <div class="mdi-emoji-robot-love"><img class="robot-file" src="{{ asset('Images/robot.svg') }}" /></div>
-  <div class="solar-heart-bold"><img class="love-file" src="{{ asset('Images/love-kecil.svg') }}" /></div>
+  <div class="mdi-emoji-robot-love"><img class="robot-file" src="{{ asset('images/robot.svg') }}" /></div>
+  <div class="solar-heart-bold"><img class="love-file" src="{{ asset('images/love-kecil.svg') }}" /></div>
   
-  <img class="decor-circle login-pink" src="{{ asset('Images/bulat-pink.svg') }}" />
-  <img class="decor-circle login-green" src="{{ asset('Images/bulat-hijau.svg') }}" />
-  <img class="decor-circle login-yellow-small" src="{{ asset('Images/bulat-kuning.svg') }}" />
-  <img class="decor-circle login-pink-large" src="{{ asset('Images/bulat-pink-2.svg') }}" />
-  <img class="decor-circle login-blue" src="{{ asset('Images/bulat-biru.svg') }}" />
+  <img class="decor-circle login-pink" src="{{ asset('images/bulat-pink.svg') }}" />
+  <img class="decor-circle login-green" src="{{ asset('images/bulat-hijau.svg') }}" />
+  <img class="decor-circle login-yellow-small" src="{{ asset('images/bulat-kuning.svg') }}" />
+  <img class="decor-circle login-pink-large" src="{{ asset('images/bulat-pink-2.svg') }}" />
+  <img class="decor-circle login-blue" src="{{ asset('images/bulat-biru.svg') }}" />
 </div>
 
 <script>

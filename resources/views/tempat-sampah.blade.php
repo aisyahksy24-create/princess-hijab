@@ -41,7 +41,7 @@
   @endif
 
   <div class="material-symbols-back" onclick="location.href='{{ url('/pendataan') }}'">
-    <img src="{{ asset('Images/keluar.svg') }}" alt="Kembali" />
+    <img src="{{ asset('images/keluar.svg') }}" alt="Kembali" />
   </div>
 
   <div class="text-wrapper-title">Tempat Sampah</div>
@@ -205,16 +205,16 @@
 
   <div class="admin-bottom-nav">
     <div class="nav-icon" onclick="location.href='{{ url('/dashboard-admin') }}'">
-      <img src="{{ asset('Images/rumah.svg') }}" alt="Home Icon" />
+      <img src="{{ asset('images/rumah.svg') }}" alt="Home Icon" />
     </div>
     <div class="nav-icon" onclick="location.href='{{ url('/rekap-omset') }}'">
-      <img src="{{ asset('Images/uang hitam.svg') }}" alt="Money Icon" />
+      <img src="{{ asset('images/uang-hitam.svg') }}" alt="Money Icon" />
     </div>
     <div class="nav-icon" onclick="location.href='{{ url('/upah-pegawai') }}'">
-      <img src="{{ asset('Images/tangan love.svg') }}" alt="Hand Heart Icon" />
+      <img src="{{ asset('images/tangan-love.svg') }}" alt="Hand Heart Icon" />
     </div>
     <div class="nav-icon active" onclick="location.href='{{ url('/pendataan') }}'">
-      <img src="{{ asset('Images/catatan hitam.svg') }}" alt="Bill List Icon" />
+      <img src="{{ asset('images/catatan-hitam.svg') }}" alt="Bill List Icon" />
     </div>
   </div>
 

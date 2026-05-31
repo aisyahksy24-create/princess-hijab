@@ -17,7 +17,7 @@
         
         <div class="header-area">
             <div class="title-box">
-                Catat Transaksi <img src="{{ asset('Images/love-hitam.svg') }}" class="love-icon-img" alt="Love Icon">
+                Catat Transaksi <img src="{{ asset('images/love-hitam.svg') }}" class="love-icon-img" alt="Love Icon">
             </div>
         </div>
 

@@ -19,11 +19,11 @@
         <hr class="line">
 
         <div class="material-symbols" onclick="location.href='/dashboard-admin'">
-            <img src="{{ asset('Images/keluar.svg') }}" alt="Keluar">
+            <img src="{{ asset('images/keluar.svg') }}" alt="Keluar">
         </div>
 
         <div class="mdi-emoji-woman">
-            <img src="{{ asset('Images/orang.svg') }}" alt="Orang">
+            <img src="{{ asset('images/orang.svg') }}" alt="Orang">
         </div>
 
         <div class="rectangle-3" id="swipeArea">
@@ -81,10 +81,10 @@
         <div class="div"></div>
 
         <div class="admin-bottom-nav">
-            <a href="/dashboard-admin" class="nav-item nav-rumah"><img src="{{ asset('Images/rumah.svg') }}"></a>
-            <a href="/rekap-omset" class="nav-item nav-uang"><img src="{{ asset('Images/uang hitam.svg') }}"></a>
-            <a href="/upah-pegawai" class="nav-item nav-love active"><img src="{{ asset('Images/tangan love.svg') }}"></a>
-            <a href="/pendataan" class="nav-item nav-catat"><img src="{{ asset('Images/catatan hitam.svg') }}"></a>
+            <a href="/dashboard-admin" class="nav-item nav-rumah"><img src="{{ asset('images/rumah.svg') }}"></a>
+            <a href="/rekap-omset" class="nav-item nav-uang"><img src="{{ asset('images/uang-hitam.svg') }}"></a>
+            <a href="/upah-pegawai" class="nav-item nav-love active"><img src="{{ asset('images/tangan-love.svg') }}"></a>
+            <a href="/pendataan" class="nav-item nav-catat"><img src="{{ asset('images/catatan-hitam.svg') }}"></a>
         </div>
     </div>
 

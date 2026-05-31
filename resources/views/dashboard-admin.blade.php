@@ -21,7 +21,7 @@
       <div class="admin-name" style="font-size: 21px; font-weight: 600; line-height: 1.2;">Selamat Datang di Dashboard Admin</div>
     </div>
     <a href="{{ url('/logout') }}" class="ic-baseline-face" title="Logout" style="cursor: pointer; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;">
-      <img src="{{ asset('Images/keluar.svg') }}" alt="Logout" style="width: 35px; height: 35px;" />
+      <img src="{{ asset('images/keluar.svg') }}" alt="Logout" style="width: 35px; height: 35px;" />
     </a>
   </div>
   
@@ -39,21 +39,21 @@
     <div class="menu-item menu-rekap" onclick="location.href='/rekap-omset'">
       <span class="menu-text">Rekap Omset</span>
       <div class="menu-icon">
-        <img src="{{ asset('Images/uang.svg') }}" alt="Icon Rekap Omset" />
+        <img src="{{ asset('images/uang.svg') }}" alt="Icon Rekap Omset" />
       </div>
     </div>
     
     <div class="menu-item menu-upah" onclick="location.href='/upah-pegawai'">
       <span class="menu-text">Upah Pegawai</span>
       <div class="menu-icon">
-        <img src="{{ asset('Images/memberi.svg') }}" alt="Icon Upah Pegawai" />
+        <img src="{{ asset('images/memberi.svg') }}" alt="Icon Upah Pegawai" />
       </div>
     </div>
     
     <div class="menu-item menu-pendataan" onclick="location.href='/pendataan'">
       <span class="menu-text">Pendataan</span>
       <div class="menu-icon">
-        <img src="{{ asset('Images/catatan.svg') }}" alt="Icon Pendataan" />
+        <img src="{{ asset('images/catatan.svg') }}" alt="Icon Pendataan" />
       </div>
     </div>
   </div>
