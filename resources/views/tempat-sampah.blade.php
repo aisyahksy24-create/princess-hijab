@@ -210,6 +210,9 @@
     <div class="nav-icon" onclick="location.href='{{ url('/rekap-omset') }}'">
       <img src="{{ asset('images/uang-hitam.svg') }}" alt="Money Icon" />
     </div>
+    <div class="nav-icon" onclick="location.href='{{ url('/pengeluaran') }}'">
+      <img src="{{ asset('Images/dompet hitam.svg') }}" alt="Expenses Icon" />
+    </div>
     <div class="nav-icon" onclick="location.href='{{ url('/upah-pegawai') }}'">
       <img src="{{ asset('images/tangan-love.svg') }}" alt="Hand Heart Icon" />
     </div>

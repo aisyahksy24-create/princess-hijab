@@ -78,6 +78,9 @@
         <a href="{{ url('/rekap-omset') }}" class="nav-link active">
             <img src="{{ asset('images/uang.svg') }}" alt="Uang" />
         </a>
+        <a href="{{ url('/pengeluaran') }}" class="nav-link">
+            <img src="{{ asset('Images/dompet hitam.svg') }}" alt="Dompet" />
+        </a>
         <a href="{{ url('/upah-pegawai') }}" class="nav-link">
             <img src="{{ asset('images/tangan-love.svg') }}" alt="Tangan Love" />
         </a>

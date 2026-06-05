@@ -30,12 +30,11 @@ class Pegawai extends Model
     public static function hitungUpah($totalPenjualan)
     {
         $pokok = 50000;
-        $persenBonus = 0.10;
-        $bonus = $totalPenjualan * $persenBonus;
+        $bonus = 0;
         return [
             'pokok' => $pokok,
             'bonus' => $bonus,
-            'bersih' => $pokok + $bonus
+            'bersih' => $pokok
         ];
     }
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\PemasokController;
 use App\Http\Controllers\JongkoController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\PengeluaranController;
 
 // Import Model yang digunakan
 use App\Models\Jongko;
@@ -49,6 +50,15 @@ Route::middleware(['auth.admin'])->group(function () {
     });
 
     Route::get('/cetak-upah-pegawai', [TransaksiController::class, 'cetakPdfUpah']);
+
+    // Pengeluaran (Manajemen Keuangan)
+    Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
+    Route::get('/pengeluaran/kategori', [PengeluaranController::class, 'pilihKategori']);
+    Route::get('/pengeluaran/tambah', [PengeluaranController::class, 'tambah']);
+    Route::post('/pengeluaran/store', [PengeluaranController::class, 'store']);
+    Route::get('/pengeluaran/hapus/{id}', [PengeluaranController::class, 'hapus']);
+    Route::get('/pengeluaran/edit/{id}', [PengeluaranController::class, 'edit']);
+    Route::post('/pengeluaran/update/{id}', [PengeluaranController::class, 'update']);
 
     // Pendataan (CRUD)
     Route::get('/pendataan', [PegawaiController::class, 'index'])->name('pendataan');

@@ -67,7 +67,7 @@
 
     <div class="header">
         <h2>PRINCESS HIJAB</h2>
-        <p>Laporan Penggajian & Upah Sesuai Omset Penjualan Riil Lapangan</p>
+        <p>Laporan Penggajian & Upah Harian Pegawai</p>
     </div>
 
     <div class="meta-info">
@@ -78,11 +78,10 @@
     <table>
         <thead>
             <tr>
-                <th style="width: 5%">No</th>
-                <th style="width: 20%">Nama Pegawai</th>
-                <th style="width: 15%">Lokasi Jongko</th>
+                <th style="width: 10%">No</th>
+                <th style="width: 30%">Nama Pegawai</th>
+                <th style="width: 25%">Lokasi Jongko</th>
                 <th style="width: 15%">Unit Terjual</th>
-                <th style="width: 25%">Bonus Omset (10%)</th>
                 <th style="width: 20%">Total Gaji Bersih</th>
             </tr>
         </thead>
@@ -93,7 +92,6 @@
                     <td style="text-align: left; font-weight: bold;">{{ $upah['nama_pegawai'] }}</td>
                     <td>{{ $upah['nama_jongko'] }}</td>
                     <td>{{ $upah['unit_terjual'] }} pcs</td>
-                    <td class="text-right">Rp {{ number_format($upah['bonus_10'], 0, ',', '.') }}</td>
                     <td class="text-right" style="font-weight: bold; color: #2e7d32;">
                         Rp {{ number_format($upah['upah_bersih'], 0, ',', '.') }}
                     </td>
@@ -101,7 +99,7 @@
             @endforeach
             
             <tr class="total-row">
-                <td colspan="5" class="text-right">TOTAL DANA YANG HARUS DIKELUARKAN:</td>
+                <td colspan="4" class="text-right">TOTAL DANA YANG HARUS DIKELUARKAN:</td>
                 <td class="text-right" style="color: #d32f2f;">Rp {{ number_format($total_pengeluaran_gaji, 0, ',', '.') }}</td>
             </tr>
         </tbody>

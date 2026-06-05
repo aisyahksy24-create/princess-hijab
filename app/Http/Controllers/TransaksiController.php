@@ -159,7 +159,22 @@ class TransaksiController extends Controller
             return $pegawai;
         });
 
-        return view('dashboard-admin', compact('omset_hari_ini', 'rekap_data'));
+        // Hitung pengeluaran harian
+        $pengeluaran_hari_ini = \App\Models\Pengeluaran::whereDate('tanggal', $hari_ini)->sum('total') ?? 0;
+
+        // Hitung total upah pegawai hari ini
+        $upah_hari_ini = $rekap_data->sum('total_upah') ?? 0;
+
+        // Hitung estimasi penghasilan bersih
+        $bersih_hari_ini = $omset_hari_ini - $pengeluaran_hari_ini - $upah_hari_ini;
+
+        return view('dashboard-admin', compact(
+            'omset_hari_ini', 
+            'pengeluaran_hari_ini', 
+            'upah_hari_ini', 
+            'bersih_hari_ini', 
+            'rekap_data'
+        ));
     }
 
     /**
