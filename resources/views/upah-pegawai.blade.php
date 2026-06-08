@@ -18,9 +18,9 @@
         
         <hr class="line">
 
-        <div class="material-symbols" onclick="location.href='/dashboard-admin'">
+        <a href="{{ url('/dashboard-admin') }}" class="material-symbols">
             <img src="{{ asset('images/keluar.svg') }}" alt="Keluar">
-        </div>
+        </a>
 
         <div class="mdi-emoji-woman">
             <img src="{{ asset('images/orang.svg') }}" alt="Orang">

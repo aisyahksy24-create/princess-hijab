@@ -12,10 +12,10 @@
 <style>
   .page-pengeluaran .data-table-container {
     position: absolute;
-    top: 210px;
+    top: 155px;
     left: 24px;
     width: calc(100% - 48px);
-    height: 520px;
+    height: 575px;
     background-color: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(8px);
     border-radius: 30px;
@@ -24,37 +24,7 @@
     overflow-y: auto;
     padding: 15px 10px;
   }
-  .filter-form {
-    position: absolute;
-    top: 155px;
-    left: 24px;
-    width: calc(100% - 48px);
-    display: flex;
-    gap: 8px;
-    z-index: 5;
-  }
-  .filter-form input, .filter-form select {
-    flex: 1;
-    height: 38px;
-    border-radius: 12px;
-    border: 1.5px solid #000;
-    padding: 0 10px;
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    outline: none;
-    background: #fff;
-  }
-  .filter-form button {
-    background: var(--primary-blue);
-    border: 1.5px solid #000;
-    border-radius: 12px;
-    padding: 0 12px;
-    cursor: pointer;
-    font-weight: 600;
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 11px;
-  }
+
   .figma-grid-table {
     display: flex;
     flex-direction: column;
@@ -144,9 +114,9 @@
     </script>
   @endif
 
-  <div class="material-symbols-back" onclick="location.href='{{ url('/dashboard-admin') }}'">
+  <a href="{{ url('/dashboard-admin') }}" class="material-symbols-back">
     <img src="{{ asset('Images/keluar.svg') }}" alt="Tombol Keluar" />
-  </div>
+  </a>
 
   <div class="text-wrapper-title" style="left: 110px;">Pengeluaran</div>
   
@@ -156,22 +126,7 @@
 
   <hr class="line-separator">
 
-  <!-- Form Filter -->
-  <form action="{{ url('/pengeluaran') }}" method="GET" class="filter-form">
-    <input type="date" name="tanggal" value="{{ $tanggal_filter }}">
-    <select name="kategori">
-      <option value="">Semua Kategori</option>
-      <option value="Belanja Stok" {{ $kategori_filter == 'Belanja Stok' ? 'selected' : '' }}>Belanja Stok</option>
-      <option value="Sewa" {{ $kategori_filter == 'Sewa' ? 'selected' : '' }}>Sewa</option>
-      <option value="Listrik" {{ $kategori_filter == 'Listrik' ? 'selected' : '' }}>Listrik</option>
-      <option value="Transportasi" {{ $kategori_filter == 'Transportasi' ? 'selected' : '' }}>Transportasi</option>
-      <option value="Lain-lain" {{ $kategori_filter == 'Lain-lain' ? 'selected' : '' }}>Lain-lain</option>
-    </select>
-    <button type="submit">Filter</button>
-    @if($tanggal_filter || $kategori_filter)
-      <button type="button" onclick="location.href='/pengeluaran'" style="background:#e9ecef;">Reset</button>
-    @endif
-  </form>
+
 
   <div class="data-table-container">
     <div class="figma-grid-table">
@@ -222,10 +177,10 @@
 
   <div class="admin-bottom-nav">
     <a href="{{ url('/dashboard-admin') }}" class="nav-item"><img src="{{ asset('Images/rumah.svg') }}" alt="Home Icon" /></a>
-    <a href="{{ url('/rekap-omset') }}" class="nav-item"><img src="{{ asset('Images/uang hitam.svg') }}" alt="Money Icon" /></a>
+    <a href="{{ url('/rekap-omset') }}" class="nav-item"><img src="{{ asset('Images/uang-hitam.svg') }}" alt="Money Icon" /></a>
     <a href="{{ url('/pengeluaran') }}" class="nav-item active"><img src="{{ asset('Images/dompet.svg') }}" alt="Expenses Icon" /></a>
-    <a href="{{ url('/upah-pegawai') }}" class="nav-item"><img src="{{ asset('Images/tangan love.svg') }}" alt="Hand Heart Icon" /></a>
-    <a href="{{ url('/pendataan') }}" class="nav-item"><img src="{{ asset('Images/catatan hitam.svg') }}" alt="Bill List Icon" /></a>
+    <a href="{{ url('/upah-pegawai') }}" class="nav-item"><img src="{{ asset('Images/tangan-love.svg') }}" alt="Hand Heart Icon" /></a>
+    <a href="{{ url('/pendataan') }}" class="nav-item"><img src="{{ asset('Images/catatan-hitam.svg') }}" alt="Bill List Icon" /></a>
   </div>
 
 </div>

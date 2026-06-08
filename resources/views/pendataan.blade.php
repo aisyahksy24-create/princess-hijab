@@ -28,9 +28,9 @@
     </script>
   @endif
 
-  <div class="material-symbols-back" onclick="location.href='{{ url('/dashboard-admin') }}'">
+  <a href="{{ url('/dashboard-admin') }}" class="material-symbols-back">
     <img src="{{ asset('images/keluar.svg') }}" alt="Tombol Keluar" />
-  </div>
+  </a>
 
   <div class="text-wrapper-title">Pendataan</div>
   
@@ -190,9 +190,6 @@
   </div> 
 
   <div class="add-data-action-container">
-    <a href="{{ url('/pendataan/tempat-sampah') }}" class="trash-nav-btn">
-      <i class="fa-solid fa-trash-can"></i> Tempat Sampah
-    </a>
     <button type="button" class="add-data-btn" onclick="toggleModalForm(true)">
       + Tambah Data
     </button>

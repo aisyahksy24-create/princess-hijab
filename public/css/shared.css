@@ -192,7 +192,7 @@ html, body {
   justify-content: space-around;
   align-items: center;
   padding: 0 10px;
-  z-index: 10;
+  z-index: 999;
 }
 
 .admin-bottom-nav .nav-icon, .admin-bottom-nav .nav-link, .admin-bottom-nav .nav-item {
@@ -1503,7 +1503,7 @@ html, body {
   width: 35px;
   height: 35px;
   cursor: pointer;
-  z-index: 3;
+  z-index: 999;
 }
 .page-pendataan .material-symbols-back img,
 .page-tempat-sampah .material-symbols-back img { width: 100%; height: 100%; }
@@ -1838,6 +1838,7 @@ html, body {
     height: 35px;
     display: flex;
     aspect-ratio: 1;
+    z-index: 999;
     cursor: pointer;
 }
 
@@ -2199,7 +2200,7 @@ html, body {
     width: 35px;
     height: 35px;
     display: flex;
-    z-index: 10;
+    z-index: 999;
     cursor: pointer;
 }
 .page-upah-pegawai .material-symbols img {

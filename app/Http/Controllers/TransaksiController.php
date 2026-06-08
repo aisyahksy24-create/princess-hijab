@@ -150,7 +150,7 @@ class TransaksiController extends Controller
             ->select('pegawai_id', DB::raw('DATE(created_at) as tanggal'))
             ->whereMonth('created_at', now()->month)
             ->whereYear('created_at', now()->year)
-            ->groupBy('pegawai_id', 'tanggal')
+            ->groupBy('pegawai_id', DB::raw('DATE(created_at)'))
             ->get();
 
         $upah_bulan_ini = 0;
@@ -177,7 +177,7 @@ class TransaksiController extends Controller
         // Hitung total upah pegawai all-time
         $activeDaysAllTime = DB::table('transaksis')
             ->select('pegawai_id', DB::raw('DATE(created_at) as tanggal'))
-            ->groupBy('pegawai_id', 'tanggal')
+            ->groupBy('pegawai_id', DB::raw('DATE(created_at)'))
             ->get();
 
         $total_upah_all_time = 0;
@@ -362,7 +362,7 @@ class TransaksiController extends Controller
             ->select('pegawai_id', DB::raw('DATE(created_at) as tanggal'))
             ->whereMonth('created_at', now()->month)
             ->whereYear('created_at', now()->year)
-            ->groupBy('pegawai_id', 'tanggal')
+            ->groupBy('pegawai_id', DB::raw('DATE(created_at)'))
             ->get();
 
         $upah_bulan_ini = 0;

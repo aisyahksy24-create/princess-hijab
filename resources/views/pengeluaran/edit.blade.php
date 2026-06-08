@@ -100,9 +100,9 @@
     </script>
   @endif
 
-  <div class="material-symbols-back" onclick="location.href='{{ url('/pengeluaran') }}'">
+  <a href="{{ url('/pengeluaran') }}" class="material-symbols-back">
     <img src="{{ asset('Images/keluar.svg') }}" alt="Tombol Keluar" />
-  </div>
+  </a>
 
   <div class="text-wrapper-title" style="left: 100px; font-size: 24px;">Ubah Pengeluaran</div>
   

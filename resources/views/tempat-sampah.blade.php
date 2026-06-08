@@ -40,9 +40,9 @@
     </script>
   @endif
 
-  <div class="material-symbols-back" onclick="location.href='{{ url('/pendataan') }}'">
+  <a href="{{ url('/pendataan') }}" class="material-symbols-back">
     <img src="{{ asset('images/keluar.svg') }}" alt="Kembali" />
-  </div>
+  </a>
 
   <div class="text-wrapper-title">Tempat Sampah</div>
   

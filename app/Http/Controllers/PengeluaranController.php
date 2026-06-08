@@ -12,23 +12,11 @@ class PengeluaranController extends Controller
     /**
      * Tampilkan list semua pengeluaran
      */
-    public function index(Request $request)
+    public function index()
     {
-        $kategori_filter = $request->input('kategori');
-        $tanggal_filter = $request->input('tanggal');
+        $data_pengeluaran = Pengeluaran::with('items')->orderBy('tanggal', 'desc')->orderBy('id', 'desc')->get();
 
-        $query = Pengeluaran::with('items')->orderBy('tanggal', 'desc')->orderBy('id', 'desc');
-
-        if ($kategori_filter) {
-            $query->where('kategori', $kategori_filter);
-        }
-        if ($tanggal_filter) {
-            $query->whereDate('tanggal', $tanggal_filter);
-        }
-
-        $data_pengeluaran = $query->get();
-
-        return view('pengeluaran.index', compact('data_pengeluaran', 'kategori_filter', 'tanggal_filter'));
+        return view('pengeluaran.index', compact('data_pengeluaran'));
     }
 
     /**
