@@ -109,33 +109,7 @@
   </div>
 
 
-<div class="menu-section-title">Rekomendasi Alokasi Dana</div>
 
-<!-- Row: Dana Darurat -->
-<div class="rekomendasi-row">
-  <div class="rekomendasi-row-icon" style="background-color: var(--primary-pink);">
-    <img src="{{ asset('images/uang.svg') }}" alt="Icon Dana Darurat" />
-  </div>
-  <span class="rekomendasi-row-label">Dana Darurat</span>
-  <div class="rekomendasi-row-badge">
-      <span>Rp {{ number_format($target_dana_darurat, 0, ',', '.') }}</span>
-  </div>
-</div>
-
-<!-- Row: Prive -->
-<div class="rekomendasi-row">
-  <div class="rekomendasi-row-icon" style="background-color: var(--primary-pink);">
-    <img src="{{ asset('images/memberi.svg') }}" alt="Icon Prive" />
-  </div>
-  <span class="rekomendasi-row-label">Prive (Pengambilan Pribadi)</span>
-  <div class="rekomendasi-row-badge">
-    @if($prive_maks > 0)
-      <span>Rp {{ number_format($prive_maks, 0, ',', '.') }}</span>
-    @else
-      <span>Tidak Disarankan</span>
-    @endif
-  </div>
-</div>
 </div>
 
 <script>

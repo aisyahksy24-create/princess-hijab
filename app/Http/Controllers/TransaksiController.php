@@ -163,13 +163,13 @@ class TransaksiController extends Controller
             $upah_bulan_ini += $upah['bersih'];
         }
 
-        $pengeluaran_bulan_ini = $pengeluaran_tabel_bulan_ini + $upah_bulan_ini;
+        $pengeluaran_bulan_ini = $pengeluaran_tabel_bulan_ini;
 
         // 3. Laba Bulan Ini
         $laba_bulan_ini = $omset_bulan_ini - $pengeluaran_bulan_ini;
 
         // 4. Saldo Kas Usaha (Saldo Awal + Total Penerimaan - Total Pengeluaran)
-        $saldo_awal = 10000000; // Rp 10.000.000 (Saldo Awal)
+        $saldo_awal = 0; // Saldo Awal dihapus
         
         $total_penerimaan = Transaksi::sum('total_harga') ?? 0;
         $total_pengeluaran_tabel = \App\Models\Pengeluaran::sum('total') ?? 0;
@@ -191,7 +191,7 @@ class TransaksiController extends Controller
             $total_upah_all_time += $upah['bersih'];
         }
 
-        $total_pengeluaran = $total_pengeluaran_tabel + $total_upah_all_time;
+        $total_pengeluaran = $total_pengeluaran_tabel;
         $saldo_kas_usaha = $saldo_awal + $total_penerimaan - $total_pengeluaran;
 
         // New calculations for Syariah management
@@ -375,7 +375,7 @@ class TransaksiController extends Controller
             $upah_bulan_ini += $upah['bersih'];
         }
 
-        $pengeluaran_bulan_ini = $pengeluaran_tabel_bulan_ini + $upah_bulan_ini;
+        $pengeluaran_bulan_ini = $pengeluaran_tabel_bulan_ini;
         $laba_bulan_ini = $omset_bulan_ini - $pengeluaran_bulan_ini;
 
         // 2. Ambil persentase alokasi dari Cache (jika tidak ada, gunakan default)

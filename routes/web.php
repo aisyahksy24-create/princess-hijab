@@ -121,9 +121,13 @@ Route::middleware(['auth.admin'])->group(function () {
             $query = DB::table('transaksis')->where('jongko_id', $jongko->id);
 
             if ($mode === 'hari') {
-                $query->whereRaw('DATE(created_at) = ?', [$waktu]);
+                $query->whereDate('created_at', $waktu);
             } else {
-                $query->whereRaw('DATE_FORMAT(created_at, "%Y-%m") = ?', [$waktu]);
+                $parts = explode('-', $waktu);
+                if (count($parts) === 2) {
+                    $query->whereYear('created_at', $parts[0])
+                          ->whereMonth('created_at', $parts[1]);
+                }
             }
 
             $total_omset = $query->sum('total_harga') ?? 0;

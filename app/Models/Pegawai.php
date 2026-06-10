@@ -31,8 +31,7 @@ class Pegawai extends Model
     public static function hitungUpah($totalPenjualan)
     {
         $pokok = 50000;
-        // 10% bonus from total sales
-        $bonus = (int) round($totalPenjualan * 0.10);
+        $bonus = 0;
         return [
             'pokok' => $pokok,
             'bonus' => $bonus,
