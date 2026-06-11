@@ -51,7 +51,7 @@
     </div>
     
     <!-- Card 3: Laba Bulan Ini (Hijau Pastel) -->
-    <div class="keuangan-card card-hijau" onclick="location.href='/alokasi-dana'">
+    <div class="keuangan-card card-hijau">
       <div class="keuangan-card-header">
         <span class="keuangan-card-title">Laba Bulan Ini</span>
         <div class="keuangan-card-icon-circle" style="background-color: var(--primary-green);">

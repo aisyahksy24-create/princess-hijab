@@ -101,8 +101,7 @@
         </div>
 
         <div class="action-container">
-            <button type="button" class="btn-action" onclick="location.href='{{ url('/pilih-jongko') }}'">Ganti Blok</button>
-            <button type="button" class="btn-action" onclick="submitFormTransaksi()">Tambah</button>
+            <button type="button" class="btn-action" style="width: 100%;" onclick="submitFormTransaksi()">Tambah</button>
         </div>
 
         <div class="decor-circle pink-1"></div>

@@ -157,26 +157,13 @@
 
         /* ===== FOOTER ===== */
         .footer {
-            padding: 15px 30px;
+            padding: 12px 30px;
             border-top: 1px solid #ccc;
             margin-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-        .footer-left {
             font-size: 10px;
             color: #888;
-        }
-        .signature-area {
             text-align: center;
-            font-size: 11px;
-        }
-        .signature-line {
-            margin-top: 55px;
-            border-top: 1px solid #333;
-            width: 150px;
-            padding-top: 5px;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -308,14 +295,7 @@
 
     {{-- ===== FOOTER ===== --}}
     <div class="footer">
-        <div class="footer-left">
-            Dicetak otomatis oleh Sistem Aplikasi Princess Hijab.<br>
-            Dokumen ini bersifat internal dan rahasia.
-        </div>
-        <div class="signature-area">
-            <div>Mengetahui,</div>
-            <div class="signature-line">Pemilik Usaha</div>
-        </div>
+        Dicetak pada: {{ $tanggal_cetak }}&nbsp;&nbsp;|&nbsp;&nbsp;Dicetak otomatis oleh Sistem Aplikasi Princess Hijab. Dokumen ini bersifat internal dan rahasia.
     </div>
 
 </body>

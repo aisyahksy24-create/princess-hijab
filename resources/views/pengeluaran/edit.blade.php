@@ -25,7 +25,7 @@
   }
   .category-banner {
     position: absolute;
-    top: 295px;
+    top: 360px;
     left: 24px;
     width: calc(100% - 48px);
     background: #fff;
@@ -39,7 +39,7 @@
   }
   .items-section {
     position: absolute;
-    top: 370px;
+    top: 435px;
     left: 24px;
     width: calc(100% - 48px);
     z-index: 5;
@@ -49,7 +49,7 @@
   }
   .total-section {
     position: absolute;
-    top: 675px;
+    top: 740px;
     left: 24px;
     width: calc(100% - 48px);
     background: #fff;
@@ -63,7 +63,7 @@
   }
   .submit-section {
     position: absolute;
-    top: 755px;
+    top: 820px;
     left: 24px;
     width: calc(100% - 48px);
     z-index: 5;
@@ -131,7 +131,7 @@
     <div style="display: flex; gap: 12px; width: 100%;">
       <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
         <label style="font-size: 11px; font-weight: 600; color: #666;">Periode</label>
-        <select name="periode" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 13px; font-weight: 600; padding: 0 10px; outline: none; background: #fff;">
+        <select name="periode" id="periode-select" onchange="hitungTanggalSelesai()" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 13px; font-weight: 600; padding: 0 10px; outline: none; background: #fff;">
            <option value="harian" {{ $pengeluaran->periode == 'harian' ? 'selected' : '' }}>Harian</option>
            <option value="mingguan" {{ $pengeluaran->periode == 'mingguan' ? 'selected' : '' }}>Mingguan</option>
            <option value="bulanan" {{ $pengeluaran->periode == 'bulanan' ? 'selected' : '' }}>Bulanan</option>
@@ -140,7 +140,17 @@
       </div>
       <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
         <label style="font-size: 11px; font-weight: 600; color: #666;">Tanggal Mulai</label>
-        <input type="date" name="tanggal_mulai" value="{{ $pengeluaran->tanggal_mulai ?? $pengeluaran->tanggal }}" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600; padding: 0 10px; outline: none;">
+        <input type="date" name="tanggal_mulai" id="tanggal-mulai-input" value="{{ $pengeluaran->tanggal_mulai ?? $pengeluaran->tanggal }}" onchange="hitungTanggalSelesai()" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600; padding: 0 10px; outline: none;">
+      </div>
+    </div>
+    <div style="display: flex; gap: 12px; width: 100%;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 11px; font-weight: 600; color: #666;">Tanggal Selesai</label>
+        <input type="date" name="tanggal_selesai" id="tanggal-selesai-input" readonly value="{{ $pengeluaran->tanggal_selesai ?? '' }}" style="width: 100%; height: 38px; border: 1.5px dashed #ff477e; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600; padding: 0 10px; outline: none; background: #fff8fb; color: #ff477e; cursor: not-allowed;">
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 11px; font-weight: 600; color: #666; opacity: 0;">-</label>
+        <div id="info-periode" style="height: 38px; border: 1.5px solid #eee; border-radius: 10px; padding: 0 10px; background: #f8f9fa; display: flex; align-items: center; font-size: 10px; font-weight: 600; color: #888;">Pilih periode & tanggal mulai</div>
       </div>
     </div>
   </div>
@@ -189,6 +199,7 @@
     <input type="hidden" name="tanggal" id="tanggal_hidden">
     <input type="hidden" name="periode" id="periode_hidden">
     <input type="hidden" name="tanggal_mulai" id="tanggal_mulai_hidden">
+    <input type="hidden" name="tanggal_selesai" id="tanggal_selesai_hidden">
     <input type="hidden" name="items" id="items_json_hidden">
   </form>
 
@@ -357,20 +368,92 @@
       return;
     }
     
+    const tanggalSelesai = document.getElementById('tanggal-selesai-input').value;
+    if (!tanggalSelesai) {
+      alert('Tanggal selesai belum terhitung. Pastikan periode dan tanggal mulai sudah diisi!');
+      return;
+    }
+    
     // Set hidden fields
     const nomor = document.querySelector('select[name="nomor_pengeluaran"]').value;
     const tanggal = document.querySelector('input[name="tanggal"]').value;
-    const periode = document.querySelector('select[name="periode"]').value;
-    const tanggalMulai = document.querySelector('input[name="tanggal_mulai"]').value;
+    const periode = document.getElementById('periode-select').value;
+    const tanggalMulai = document.getElementById('tanggal-mulai-input').value;
     
     document.getElementById('nomor_pengeluaran_hidden').value = nomor;
     document.getElementById('tanggal_hidden').value = tanggal;
     document.getElementById('periode_hidden').value = periode;
     document.getElementById('tanggal_mulai_hidden').value = tanggalMulai;
+    document.getElementById('tanggal_selesai_hidden').value = tanggalSelesai;
     document.getElementById('items_json_hidden').value = JSON.stringify(expenseItems);
     
     document.getElementById('expense-form').submit();
   }
+
+  /**
+   * Hitung tanggal selesai otomatis berdasarkan periode dan tanggal mulai.
+   * Harian   : = tanggal_mulai
+   * Mingguan : = tanggal_mulai + 6 hari (7 hari total)
+   * Bulanan  : = hari terakhir bulan tanggal_mulai
+   * Tahunan  : = 31 Desember tahun tanggal_mulai
+   */
+  function hitungTanggalSelesai() {
+    const periode = document.getElementById('periode-select').value;
+    const tanggalMulaiVal = document.getElementById('tanggal-mulai-input').value;
+    const infoEl = document.getElementById('info-periode');
+    const selesaiInput = document.getElementById('tanggal-selesai-input');
+
+    if (!tanggalMulaiVal) {
+      selesaiInput.value = '';
+      infoEl.textContent = 'Pilih tanggal mulai terlebih dahulu';
+      return;
+    }
+
+    const mulai = new Date(tanggalMulaiVal + 'T00:00:00');
+    let selesai;
+    let infoText = '';
+
+    if (periode === 'harian') {
+      selesai = new Date(mulai);
+      infoText = 'Berlaku 1 hari saja';
+    } else if (periode === 'mingguan') {
+      selesai = new Date(mulai);
+      selesai.setDate(selesai.getDate() + 6);
+      infoText = 'Berlaku 7 hari';
+    } else if (periode === 'bulanan') {
+      selesai = new Date(mulai.getFullYear(), mulai.getMonth() + 1, 0);
+      infoText = 'Berlaku s/d akhir bulan';
+    } else if (periode === 'tahunan') {
+      selesai = new Date(mulai.getFullYear(), 11, 31);
+      infoText = 'Berlaku s/d 31 Des ' + mulai.getFullYear();
+    }
+
+    const yyyy = selesai.getFullYear();
+    const mm = String(selesai.getMonth() + 1).padStart(2, '0');
+    const dd = String(selesai.getDate()).padStart(2, '0');
+    selesaiInput.value = `${yyyy}-${mm}-${dd}`;
+    infoEl.textContent = infoText;
+  }
+
+  // Hitung otomatis saat halaman pertama kali dibuka
+  window.addEventListener('DOMContentLoaded', () => {
+    renderItemsList();
+    // Jika tanggal_selesai belum tersimpan di DB, hitung ulang
+    const savedSelesai = document.getElementById('tanggal-selesai-input').value;
+    if (!savedSelesai) {
+      hitungTanggalSelesai();
+    } else {
+      // Update info teks sesuai periode
+      const infoPeriodeMap = {
+        'harian': 'Berlaku 1 hari saja',
+        'mingguan': 'Berlaku 7 hari',
+        'bulanan': 'Berlaku s/d akhir bulan',
+        'tahunan': 'Berlaku s/d 31 Des ' + new Date(savedSelesai).getFullYear()
+      };
+      const periode = document.getElementById('periode-select').value;
+      document.getElementById('info-periode').textContent = infoPeriodeMap[periode] || '';
+    }
+  });
 </script>
 
 <script src="{{ asset('js/shared.js') }}"></script>

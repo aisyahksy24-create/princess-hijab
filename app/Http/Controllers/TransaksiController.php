@@ -183,29 +183,61 @@ class TransaksiController extends Controller
 
     /**
      * 7. FUNGSI BARU: Mengolah dan Mengunduh PDF Laporan Rekap Omset
+     *    - Dikelompokkan per pegawai
+     *    - Waktu transaksi dalam timezone WIB (Asia/Jakarta)
+     *    - Diurutkan berdasarkan pegawai lalu waktu terbaru
      */
     public function cetakPdfOmset(Request $request)
     {
-        // Ambil data transaksi beserta relasi produk dan jongko
-        $data_transaksi = Transaksi::with(['produk', 'jongko'])->orderBy('created_at', 'desc')->get();
+        $tz = 'Asia/Jakarta';
 
-        // Hitung total nilai rupiah omset terkumpul
-        $total_omset = $data_transaksi->sum('total_harga');
+        // Ambil semua transaksi dengan relasi produk, jongko, dan pegawai
+        // Urutkan: pegawai_id ASC (agar grup berurutan), created_at DESC (terbaru dulu dalam setiap grup)
+        $data_transaksi = Transaksi::with(['produk', 'jongko', 'pegawai'])
+            ->whereHas('pegawai', function ($q) {
+                $q->where('role', '!=', 'admin');
+            })
+            ->orderBy('pegawai_id', 'asc')
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        // Konversi created_at ke WIB untuk tiap transaksi
+        $data_transaksi->each(function ($trx) use ($tz) {
+            $trx->waktu_wib = \Carbon\Carbon::parse($trx->created_at)
+                ->timezone($tz)
+                ->format('d/m/Y H:i');
+        });
+
+        // Kelompokkan transaksi per pegawai
+        $grouped = $data_transaksi->groupBy('pegawai_id');
+
+        // Susun data per pegawai dengan subtotal
+        $data_per_pegawai = [];
+        foreach ($grouped as $pegawai_id => $transaksis) {
+            $pegawai_obj = $transaksis->first()->pegawai;
+            $subtotal    = $transaksis->sum('total_harga');
+
+            $data_per_pegawai[] = [
+                'id_pegawai'   => $pegawai_id,
+                'nama_pegawai' => $pegawai_obj ? $pegawai_obj->nama_pegawai : 'Pegawai Terhapus',
+                'transaksis'   => $transaksis,
+                'subtotal'     => $subtotal,
+            ];
+        }
+
+        // Grand total keseluruhan
+        $grand_total = $data_transaksi->sum('total_harga');
 
         $data = [
-            'title'           => 'LAPORAN REKAP OMSET - PRINCESS HIJAB',
-            'tanggal'         => date('d F Y'),
-            'data_transaksi'  => $data_transaksi,
-            'total_omset'     => $total_omset
+            'title'            => 'LAPORAN REKAP OMSET - PRINCESS HIJAB',
+            'tanggal'          => \Carbon\Carbon::now($tz)->isoFormat('D MMMM Y, HH:mm') . ' WIB',
+            'data_per_pegawai' => $data_per_pegawai,
+            'grand_total'      => $grand_total,
         ];
 
-        // Memuat susunan halaman blade khusus PDF
         $pdf = Pdf::loadView('exports.rekap_omset_pdf', $data);
-        
-        // Mengatur orientasi kertas cetak
-        $pdf->setPaper('a4', 'portrait');
+        $pdf->setPaper('a4', 'landscape'); // landscape agar kolom lebih lega
 
-        // Mengunduh langsung berkas dokumen PDF-nya
         return $pdf->download('Laporan_Rekap_Omset_Princess_Hijab_' . date('Ymd') . '.pdf');
     }
 

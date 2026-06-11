@@ -223,12 +223,7 @@
             🖨️ &nbsp;Unduh PDF Laporan
         </a>
 
-        {{-- Info --}}
-        <div class="info-box">
-            <strong>ℹ️ Catatan:</strong><br>
-            Laporan memuat <strong>Total Omset</strong>, <strong>Total Pengeluaran</strong> (akumulasi sistem running month),
-            dan <strong>Laba Bersih</strong> beserta rincian per jongko dan detail setiap pengeluaran aktif.
-        </div>
+
     </div>
 
     {{-- Bottom Nav --}}

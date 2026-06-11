@@ -15,7 +15,7 @@
     top: 210px;
     left: 45px;
     width: calc(100% - 90px);
-    height: 480px;
+    height: 580px;
     background-color: rgba(193, 214, 243, 0.48);
     border-radius: 30px;
     box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
@@ -76,28 +76,34 @@
   <div class="text-wrapper-2" style="top: 135px; font-size: 23px; width: 100%; text-align: center;">Pilih Kategori</div>
   
   <div class="rectangle-3">
-    <!-- Belanja Stok -->
-    <button type="button" class="category-btn" style="background-color: #F5B9DB;" onclick="selectCategory('Belanja Stok')">
+    <!-- Biaya Upah -->
+    <button type="button" class="category-btn" style="background-color: #EDD9F7;" onclick="selectCategory('Biaya Upah')">
+      <div class="category-icon"><i class="fa-solid fa-hand-holding-dollar" style="color: #9b59b6;"></i></div>
+      Biaya Upah
+    </button>
+
+    <!-- Biaya Kebersihan -->
+    <button type="button" class="category-btn" style="background-color: #D0F0FF;" onclick="selectCategory('Biaya Kebersihan')">
+      <div class="category-icon"><i class="fa-solid fa-broom" style="color: #0288d1;"></i></div>
+      Biaya Kebersihan
+    </button>
+
+    <!-- Persediaan Stok -->
+    <button type="button" class="category-btn" style="background-color: #F5B9DB;" onclick="selectCategory('Persediaan Stok')">
       <div class="category-icon"><i class="fa-solid fa-cart-shopping" style="color: #ff477e;"></i></div>
-      Belanja Stok
+      Persediaan Stok
     </button>
 
-    <!-- Sewa -->
-    <button type="button" class="category-btn" style="background-color: #FDF6C8;" onclick="selectCategory('Sewa')">
-      <div class="category-icon"><i class="fa-solid fa-building" style="color: #f5a623;"></i></div>
-      Sewa
-    </button>
-
-    <!-- Listrik -->
-    <button type="button" class="category-btn" style="background-color: #D6FCCD;" onclick="selectCategory('Listrik')">
+    <!-- Biaya Listrik -->
+    <button type="button" class="category-btn" style="background-color: #D6FCCD;" onclick="selectCategory('Biaya Listrik')">
       <div class="category-icon"><i class="fa-solid fa-bolt" style="color: #2ca02c;"></i></div>
-      Listrik
+      Biaya Listrik
     </button>
 
-    <!-- Transportasi -->
-    <button type="button" class="category-btn" style="background-color: #C1D6F3;" onclick="selectCategory('Transportasi')">
-      <div class="category-icon"><i class="fa-solid fa-truck" style="color: #1a73e8;"></i></div>
-      Transportasi
+    <!-- Biaya Sewa -->
+    <button type="button" class="category-btn" style="background-color: #FDF6C8;" onclick="selectCategory('Biaya Sewa')">
+      <div class="category-icon"><i class="fa-solid fa-building" style="color: #f5a623;"></i></div>
+      Biaya Sewa
     </button>
 
     <!-- Lain-lain -->

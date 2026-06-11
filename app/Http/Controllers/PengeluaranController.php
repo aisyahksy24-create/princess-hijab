@@ -56,6 +56,7 @@ class PengeluaranController extends Controller
             'kategori' => 'required',
             'periode' => 'required|in:harian,mingguan,bulanan,tahunan',
             'tanggal_mulai' => 'required|date',
+            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
             'items' => 'required', // JSON string berisi list item
         ]);
 
@@ -82,6 +83,7 @@ class PengeluaranController extends Controller
                 'total' => $total_pengeluaran,
                 'periode' => $request->input('periode'),
                 'tanggal_mulai' => $request->input('tanggal_mulai'),
+                'tanggal_selesai' => $request->input('tanggal_selesai'),
             ]);
 
             // Simpan detail item
@@ -129,6 +131,7 @@ class PengeluaranController extends Controller
             'kategori' => 'required',
             'periode' => 'required|in:harian,mingguan,bulanan,tahunan',
             'tanggal_mulai' => 'required|date',
+            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
             'items' => 'required', // JSON string berisi list item
         ]);
 
@@ -156,6 +159,7 @@ class PengeluaranController extends Controller
                 'total' => $total_pengeluaran,
                 'periode' => $request->input('periode'),
                 'tanggal_mulai' => $request->input('tanggal_mulai'),
+                'tanggal_selesai' => $request->input('tanggal_selesai'),
             ]);
 
             // Hapus detail item lama, lalu masukkan yang baru
