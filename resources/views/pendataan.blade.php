@@ -224,9 +224,6 @@
     <div class="nav-icon" onclick="location.href='{{ url('/pengeluaran') }}'">
       <img src="{{ asset('Images/dompet hitam.svg') }}" alt="Expenses Icon" />
     </div>
-    <div class="nav-icon" onclick="location.href='{{ url('/upah-pegawai') }}'">
-      <img src="{{ asset('images/tangan-love.svg') }}" alt="Hand Heart Icon" />
-    </div>
     <div class="nav-icon active" onclick="switchTabArea('produk')">
       <img src="{{ asset('images/catatan-hitam.svg') }}" alt="Bill List Icon" />
     </div>

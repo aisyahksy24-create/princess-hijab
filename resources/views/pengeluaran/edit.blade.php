@@ -25,7 +25,7 @@
   }
   .category-banner {
     position: absolute;
-    top: 230px;
+    top: 295px;
     left: 24px;
     width: calc(100% - 48px);
     background: #fff;
@@ -39,7 +39,7 @@
   }
   .items-section {
     position: absolute;
-    top: 305px;
+    top: 370px;
     left: 24px;
     width: calc(100% - 48px);
     z-index: 5;
@@ -112,19 +112,36 @@
 
   <hr class="line-separator">
 
-  <!-- Bagian 1: Nomor Pengeluaran & Tanggal -->
-  <div class="tambah-form-card">
-    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
-      <label style="font-size: 11px; font-weight: 600; color: #666;">Nomor Pengeluaran</label>
-      <select name="nomor_pengeluaran" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 13px; font-weight: 600; padding: 0 10px; outline: none; background: #fff;">
-         @for($i = 1; $i <= 50; $i++)
-           <option value="{{ $i }}" {{ $pengeluaran->nomor_pengeluaran == $i ? 'selected' : '' }}>{{ $i }}</option>
-         @endfor
-      </select>
+  <!-- Bagian 1: Nomor Pengeluaran & Tanggal & Periode & Tanggal Mulai -->
+  <div class="tambah-form-card" style="display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; gap: 12px; width: 100%;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 11px; font-weight: 600; color: #666;">Nomor Pengeluaran</label>
+        <select name="nomor_pengeluaran" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 13px; font-weight: 600; padding: 0 10px; outline: none; background: #fff;">
+           @for($i = 1; $i <= 50; $i++)
+             <option value="{{ $i }}" {{ $pengeluaran->nomor_pengeluaran == $i ? 'selected' : '' }}>{{ $i }}</option>
+           @endfor
+        </select>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 11px; font-weight: 600; color: #666;">Tanggal</label>
+        <input type="date" name="tanggal" value="{{ $pengeluaran->tanggal }}" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600; padding: 0 10px; outline: none;">
+      </div>
     </div>
-    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
-      <label style="font-size: 11px; font-weight: 600; color: #666;">Tanggal</label>
-      <input type="date" name="tanggal" value="{{ $pengeluaran->tanggal }}" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600; padding: 0 10px; outline: none;">
+    <div style="display: flex; gap: 12px; width: 100%;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 11px; font-weight: 600; color: #666;">Periode</label>
+        <select name="periode" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 13px; font-weight: 600; padding: 0 10px; outline: none; background: #fff;">
+           <option value="harian" {{ $pengeluaran->periode == 'harian' ? 'selected' : '' }}>Harian</option>
+           <option value="mingguan" {{ $pengeluaran->periode == 'mingguan' ? 'selected' : '' }}>Mingguan</option>
+           <option value="bulanan" {{ $pengeluaran->periode == 'bulanan' ? 'selected' : '' }}>Bulanan</option>
+           <option value="tahunan" {{ $pengeluaran->periode == 'tahunan' ? 'selected' : '' }}>Tahunan</option>
+        </select>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 11px; font-weight: 600; color: #666;">Tanggal Mulai</label>
+        <input type="date" name="tanggal_mulai" value="{{ $pengeluaran->tanggal_mulai ?? $pengeluaran->tanggal }}" style="width: 100%; height: 38px; border: 1.5px solid #000; border-radius: 10px; font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600; padding: 0 10px; outline: none;">
+      </div>
     </div>
   </div>
 
@@ -170,6 +187,8 @@
     <input type="hidden" name="kategori" value="{{ $pengeluaran->kategori }}">
     <input type="hidden" name="nomor_pengeluaran" id="nomor_pengeluaran_hidden">
     <input type="hidden" name="tanggal" id="tanggal_hidden">
+    <input type="hidden" name="periode" id="periode_hidden">
+    <input type="hidden" name="tanggal_mulai" id="tanggal_mulai_hidden">
     <input type="hidden" name="items" id="items_json_hidden">
   </form>
 
@@ -341,9 +360,13 @@
     // Set hidden fields
     const nomor = document.querySelector('select[name="nomor_pengeluaran"]').value;
     const tanggal = document.querySelector('input[name="tanggal"]').value;
+    const periode = document.querySelector('select[name="periode"]').value;
+    const tanggalMulai = document.querySelector('input[name="tanggal_mulai"]').value;
     
     document.getElementById('nomor_pengeluaran_hidden').value = nomor;
     document.getElementById('tanggal_hidden').value = tanggal;
+    document.getElementById('periode_hidden').value = periode;
+    document.getElementById('tanggal_mulai_hidden').value = tanggalMulai;
     document.getElementById('items_json_hidden').value = JSON.stringify(expenseItems);
     
     document.getElementById('expense-form').submit();

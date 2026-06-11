@@ -85,13 +85,6 @@
       </div>
       <span class="menu-shortcut-text">Rekap Omset</span>
     </a>
-    
-    <a href="{{ url('/upah-pegawai') }}" class="menu-shortcut-item">
-      <div class="menu-shortcut-icon" style="background-color: var(--primary-green);">
-        <img src="{{ asset('images/memberi.svg') }}" alt="Icon Upah Pegawai" />
-      </div>
-      <span class="menu-shortcut-text">Upah Pegawai</span>
-    </a>
 
     <a href="{{ url('/pengeluaran') }}" class="menu-shortcut-item">
       <div class="menu-shortcut-icon" style="background-color: var(--primary-pink);">
@@ -105,6 +98,13 @@
         <img src="{{ asset('images/catatan.svg') }}" alt="Icon Pendataan" />
       </div>
       <span class="menu-shortcut-text">Pendataan</span>
+    </a>
+
+    <a href="{{ url('/cetak-laporan-bulanan') }}" class="menu-shortcut-item">
+      <div class="menu-shortcut-icon" style="background-color: var(--primary-green);">
+        <img src="{{ asset('images/catatan.svg') }}" alt="Icon Cetak Laporan" />
+      </div>
+      <span class="menu-shortcut-text">Cetak Laporan</span>
     </a>
   </div>
 

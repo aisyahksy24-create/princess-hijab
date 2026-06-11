@@ -244,9 +244,6 @@
         <a href="{{ url('/pengeluaran') }}" class="nav-link">
             <img src="{{ asset('images/dompet hitam.svg') }}" alt="Dompet" />
         </a>
-        <a href="{{ url('/upah-pegawai') }}" class="nav-link">
-            <img src="{{ asset('images/tangan-love.svg') }}" alt="Tangan Love" />
-        </a>
         <a href="{{ url('/pendataan') }}" class="nav-link">
             <img src="{{ asset('images/catatan-hitam.svg') }}" alt="Catatan" />
         </a>

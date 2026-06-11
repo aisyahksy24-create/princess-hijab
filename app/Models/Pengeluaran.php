@@ -16,6 +16,8 @@ class Pengeluaran extends Model
         'tanggal',
         'kategori',
         'total',
+        'periode',
+        'tanggal_mulai',
     ];
 
     /**

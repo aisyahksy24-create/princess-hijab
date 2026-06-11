@@ -59,11 +59,12 @@ Route::middleware(['auth.admin'])->group(function () {
 
     Route::get('/cetak-rekap-omset', [TransaksiController::class, 'cetakPdfOmset']);
 
-    Route::get('/upah-pegawai', function () {
-        return view('upah-pegawai');
-    });
+    // Laporan Keuangan Bulanan
+    Route::get('/cetak-laporan-bulanan', [TransaksiController::class, 'cetakLaporanBulanan']);
+    Route::get('/cetak-laporan-bulanan/pdf', [TransaksiController::class, 'downloadLaporanBulananPdf']);
+    Route::get('/api/preview-laporan', [TransaksiController::class, 'previewLaporanApi']);
 
-    Route::get('/cetak-upah-pegawai', [TransaksiController::class, 'cetakPdfUpah']);
+
 
     // Pengeluaran (Manajemen Keuangan)
     Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
@@ -110,6 +111,7 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('/api/ambil-rekap', function (Request $request) {
         $mode  = $request->query('mode');
         $waktu = $request->query('waktu');
+        $tz    = 'Asia/Jakarta';
 
         $all_jongko = \Illuminate\Support\Facades\Cache::rememberForever('cache_all_jongko', function () {
             return Jongko::orderBy('id', 'asc')->get();
@@ -121,12 +123,17 @@ Route::middleware(['auth.admin'])->group(function () {
             $query = DB::table('transaksis')->where('jongko_id', $jongko->id);
 
             if ($mode === 'hari') {
-                $query->whereDate('created_at', $waktu);
+                // Konversi tanggal WIB ke range UTC
+                $start = \Carbon\Carbon::parse($waktu . ' 00:00:00', $tz)->utc()->toDateTimeString();
+                $end   = \Carbon\Carbon::parse($waktu . ' 23:59:59', $tz)->utc()->toDateTimeString();
+                $query->whereBetween('created_at', [$start, $end]);
             } else {
                 $parts = explode('-', $waktu);
                 if (count($parts) === 2) {
-                    $query->whereYear('created_at', $parts[0])
-                          ->whereMonth('created_at', $parts[1]);
+                    // Konversi bulan WIB ke range UTC
+                    $start = \Carbon\Carbon::createFromDate((int)$parts[0], (int)$parts[1], 1, $tz)->startOfMonth()->utc()->toDateTimeString();
+                    $end   = \Carbon\Carbon::createFromDate((int)$parts[0], (int)$parts[1], 1, $tz)->endOfMonth()->utc()->toDateTimeString();
+                    $query->whereBetween('created_at', [$start, $end]);
                 }
             }
 
@@ -146,7 +153,7 @@ Route::middleware(['auth.admin'])->group(function () {
         ]);
     });
 
-    Route::get('/api/ambil-upah', [TransaksiController::class, 'apiAmbilUpah']);
+
 });
 
 

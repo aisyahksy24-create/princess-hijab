@@ -145,7 +145,12 @@
                 <span style="font-size:9px; background-color: #e3f2fd; padding: 2px 6px; border-radius: 8px; border: 1px solid #90caf9; font-weight: 600; display: inline-block;">
                   {{ $pengeluaran->kategori }}
                 </span>
-                <div style="font-size:8px; color:#666; margin-top:2px;">{{ date('d/m/Y', strtotime($pengeluaran->tanggal)) }}</div>
+                <div style="font-size:8px; color:#666; margin-top:2px;">
+                  Mulai: {{ date('d/m/Y', strtotime($pengeluaran->tanggal_mulai ?? $pengeluaran->tanggal)) }}
+                  <span style="background-color: #fbe9e7; color: #d84315; padding: 1px 4px; border-radius: 4px; font-size: 7px; font-weight: 700; text-transform: uppercase;">
+                    {{ $pengeluaran->periode }}
+                  </span>
+                </div>
               </div>
               <div class="col-3-reduced" style="font-weight: 600; color: #e6005c;">Rp {{ number_format($pengeluaran->total, 0, ',', '.') }}</div>
               <div class="col-5-action">
@@ -179,7 +184,6 @@
     <a href="{{ url('/dashboard-admin') }}" class="nav-item"><img src="{{ asset('Images/rumah.svg') }}" alt="Home Icon" /></a>
     <a href="{{ url('/rekap-omset') }}" class="nav-item"><img src="{{ asset('Images/uang-hitam.svg') }}" alt="Money Icon" /></a>
     <a href="{{ url('/pengeluaran') }}" class="nav-item active"><img src="{{ asset('Images/dompet.svg') }}" alt="Expenses Icon" /></a>
-    <a href="{{ url('/upah-pegawai') }}" class="nav-item"><img src="{{ asset('Images/tangan-love.svg') }}" alt="Hand Heart Icon" /></a>
     <a href="{{ url('/pendataan') }}" class="nav-item"><img src="{{ asset('Images/catatan-hitam.svg') }}" alt="Bill List Icon" /></a>
   </div>
 
