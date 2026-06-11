@@ -115,13 +115,13 @@
   @endif
 
   <a href="{{ url('/dashboard-admin') }}" class="material-symbols-back">
-    <img src="{{ asset('Images/keluar.svg') }}" alt="Tombol Keluar" />
+    <img src="{{ asset('images/keluar.svg') }}" alt="Tombol Keluar" />
   </a>
 
   <div class="text-wrapper-title" style="left: 110px;">Pengeluaran</div>
   
   <div class="streamline-freehand">
-    <img src="{{ asset('Images/dompet.svg') }}" alt="Ikon Pengeluaran" />
+    <img src="{{ asset('images/dompet.svg') }}" alt="Ikon Pengeluaran" />
   </div>
 
   <hr class="line-separator">
@@ -181,10 +181,10 @@
   <div class="bg-gradient-bottom" style="background: linear-gradient(180deg, #ffffff 0%, rgba(193, 214, 243, 1) 100%);"></div>
 
   <div class="admin-bottom-nav">
-    <a href="{{ url('/dashboard-admin') }}" class="nav-item"><img src="{{ asset('Images/rumah.svg') }}" alt="Home Icon" /></a>
-    <a href="{{ url('/rekap-omset') }}" class="nav-item"><img src="{{ asset('Images/uang-hitam.svg') }}" alt="Money Icon" /></a>
-    <a href="{{ url('/pengeluaran') }}" class="nav-item active"><img src="{{ asset('Images/dompet.svg') }}" alt="Expenses Icon" /></a>
-    <a href="{{ url('/pendataan') }}" class="nav-item"><img src="{{ asset('Images/catatan-hitam.svg') }}" alt="Bill List Icon" /></a>
+    <a href="{{ url('/dashboard-admin') }}" class="nav-item"><img src="{{ asset('images/rumah.svg') }}" alt="Home Icon" /></a>
+    <a href="{{ url('/rekap-omset') }}" class="nav-item"><img src="{{ asset('images/uang-hitam.svg') }}" alt="Money Icon" /></a>
+    <a href="{{ url('/pengeluaran') }}" class="nav-item active"><img src="{{ asset('images/dompet.svg') }}" alt="Expenses Icon" /></a>
+    <a href="{{ url('/pendataan') }}" class="nav-item"><img src="{{ asset('images/catatan-hitam.svg') }}" alt="Bill List Icon" /></a>
   </div>
 
 </div>

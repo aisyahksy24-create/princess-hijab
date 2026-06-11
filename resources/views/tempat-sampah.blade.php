@@ -211,7 +211,7 @@
       <img src="{{ asset('images/uang-hitam.svg') }}" alt="Money Icon" />
     </div>
     <div class="nav-icon" onclick="location.href='{{ url('/pengeluaran') }}'">
-      <img src="{{ asset('Images/dompet hitam.svg') }}" alt="Expenses Icon" />
+      <img src="{{ asset('images/dompet hitam.svg') }}" alt="Expenses Icon" />
     </div>
     <div class="nav-icon active" onclick="location.href='{{ url('/pendataan') }}'">
       <img src="{{ asset('images/catatan-hitam.svg') }}" alt="Bill List Icon" />

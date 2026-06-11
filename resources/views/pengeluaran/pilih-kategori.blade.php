@@ -70,7 +70,7 @@
   <div class="ellipse-4"></div>
   
   <div class="material-symbols-back" onclick="location.href='{{ url('/pengeluaran') }}'" style="position: absolute; top: 75px; left: 18px; width: 35px; height: 35px; cursor: pointer; z-index: 10;">
-    <img src="{{ asset('Images/keluar.svg') }}" alt="Tombol Keluar" style="width: 100%; height: 100%;" />
+    <img src="{{ asset('images/keluar.svg') }}" alt="Tombol Keluar" style="width: 100%; height: 100%;" />
   </div>
   
   <div class="text-wrapper-2" style="top: 135px; font-size: 23px; width: 100%; text-align: center;">Pilih Kategori</div>

@@ -101,13 +101,13 @@
   @endif
 
   <a href="{{ url('/pengeluaran') }}" class="material-symbols-back">
-    <img src="{{ asset('Images/keluar.svg') }}" alt="Tombol Keluar" />
+    <img src="{{ asset('images/keluar.svg') }}" alt="Tombol Keluar" />
   </a>
 
   <div class="text-wrapper-title" style="left: 100px; font-size: 24px;">Ubah Pengeluaran</div>
   
   <div class="streamline-freehand">
-    <img src="{{ asset('Images/dompet.svg') }}" alt="Ikon Pengeluaran" />
+    <img src="{{ asset('images/dompet.svg') }}" alt="Ikon Pengeluaran" />
   </div>
 
   <hr class="line-separator">

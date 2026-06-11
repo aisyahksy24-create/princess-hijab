@@ -235,7 +235,7 @@
             <img src="{{ asset('images/uang.svg') }}" alt="Uang" />
         </a>
         <a href="{{ url('/pengeluaran') }}" class="nav-link">
-            <img src="{{ asset('Images/dompet hitam.svg') }}" alt="Dompet" />
+            <img src="{{ asset('images/dompet hitam.svg') }}" alt="Dompet" />
         </a>
         <a href="{{ url('/pendataan') }}" class="nav-link">
             <img src="{{ asset('images/catatan-hitam.svg') }}" alt="Catatan" />
